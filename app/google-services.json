@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "172904715481",
+    "firebase_url": "https://travellada-15f0d-default-rtdb.firebaseio.com",
+    "project_id": "travellada-15f0d",
+    "storage_bucket": "travellada-15f0d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:172904715481:android:7498d0e1d35c6bc42c9ac8",
+        "android_client_info": {
+          "package_name": "com.example.travelada"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcgJkNHgbryxCYft__6DyTl4FEaAToBI0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
