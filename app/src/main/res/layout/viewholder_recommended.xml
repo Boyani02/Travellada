@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="215dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_margin="8dp"
+    android:elevation="3dp"
+    android:background="@drawable/white_corner_bg">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:layout_width="240dp"
+        android:layout_height="130dp"
+        android:scaleType="centerCrop"
+        android:id="@+id/pic"
+        tools:srcCompat="@tools:sample/backgrounds/scenic"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.circleImageView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/titleTxt"
+        android:text="title"
+        android:layout_marginTop="4dp"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/teal"
+        app:layout_constraintStart_toStartOf="@id/pic"
+        app:layout_constraintTop_toBottomOf="@id/pic"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scoreTxt"
+        android:text="5"
+        android:textColor="@color/teal"
+        app:layout_constraintBottom_toBottomOf="@id/titleTxt"
+        app:layout_constraintEnd_toEndOf="@id/pic"
+        app:layout_constraintTop_toTopOf="@id/titleTxt"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView3"
+        app:layout_constraintEnd_toStartOf="@id/scoreTxt"
+        app:layout_constraintBottom_toBottomOf="@id/scoreTxt"
+        app:layout_constraintTop_toTopOf="@id/scoreTxt"
+        app:srcCompat="@drawable/star"
+        />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView4"
+        android:layout_marginTop="4dp"
+        app:layout_constraintStart_toStartOf="@id/titleTxt"
+        app:layout_constraintTop_toBottomOf="@id/titleTxt"
+        app:srcCompat="@drawable/location"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addressTxt"
+        android:layout_marginStart="8dp"
+        android:text="address"
+        app:layout_constraintBottom_toBottomOf="@id/imageView4"
+        app:layout_constraintStart_toEndOf="@id/imageView4"
+        app:layout_constraintTop_toTopOf="@id/imageView4"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/priceTxt"
+        android:text="$0"
+        android:textColor="@color/teal"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/imageView4"
+        app:layout_constraintTop_toBottomOf="@id/addressTxt"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView5"
+        android:text="/Person"
+        android:textColor="@color/teal"
+        android:textSize="12sp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/priceTxt"
+        app:layout_constraintTop_toTopOf="@id/priceTxt"
+        app:layout_constraintStart_toEndOf="@id/priceTxt"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
