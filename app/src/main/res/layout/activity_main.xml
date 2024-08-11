@@ -50,6 +50,7 @@
                     app:layout_constraintEnd_toEndOf="@id/location"
                     app:layout_constraintStart_toStartOf="@id/location"
                     app:layout_constraintTop_toBottomOf="@id/location" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -238,18 +239,6 @@
                     android:textColor="@color/mustard"/>
             </LinearLayout>
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnMap"
-                style="@android:style/Widget.Button"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/teal_bg"
-                android:text="Map"
-                android:textColor="@color/mustard"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:cornerRadius="20dp"
-                android:layout_below="@id/recyclerViewPopular"/>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -281,6 +270,7 @@
     </ScrollView>
 
     <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/navBottom"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         app:cnb_menuResource="@menu/menu_bottom"
@@ -290,6 +280,7 @@
         app:cnb_iconSize="20sp"
         app:cnb_iconColor="@color/black"
         app:cnb_radius="50dp"
+        android:layout_marginBottom="2dp"
         app:cnb_orientationMode="horizontal"
         app:cnb_unselectedColor="@color/teal"
         app:layout_constraintBottom_toBottomOf="parent"

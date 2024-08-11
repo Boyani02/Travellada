@@ -1,13 +1,12 @@
 package com.example.travelada.Activity;
 
-import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -15,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 
-import com.example.travelada.Activity.MapActivity;
 import com.example.travelada.Adapter.CategoryAdapter;
 import com.example.travelada.Adapter.PopularAdapter;
 import com.example.travelada.Adapter.RecommendedAdapter;
@@ -26,38 +24,39 @@ import com.example.travelada.Domain.Location;
 import com.example.travelada.Domain.SliderItems;
 import com.example.travelada.R;
 import com.example.travelada.databinding.ActivityMainBinding;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
+import com.ismaeldivita.chipnavigation.ChipNavigationBar;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.ArrayList;
 
 public class MainActivity extends BaseActivity {
-
     ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(R.layout.activity_main);
+
+        binding= ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        if(isServicesOK()){
-                init();
-            }
 
+        init();
         initLocation();
         initBanner();
         initCategory();
         initRecommended();
         initPopular();
 
+
     }
+
 
     private void initPopular() {
         DatabaseReference myRef = database.getReference("Popular");
@@ -209,42 +208,57 @@ public class MainActivity extends BaseActivity {
         });
     }
 
-    private static final String TAG ="MainActivity";
+    private void init() {
+        ChipNavigationBar navBottomBar = findViewById(R.id.navBottom); // Ensure the ID matches
 
-    private static final  int ERROR_DIALOG_REQUEST = 9001 ;
+        // Initialize ChipNavigationBar
+        if (navBottomBar != null) {
+            navBottomBar.setOnItemSelectedListener(new ChipNavigationBar.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(int itemId) {
+                    Intent intent = null;
 
-    private void init(){
-        Button btnMap = (Button) findViewById(R.id.btnMap);
-        btnMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MapActivity.class);
-                startActivity(intent);
-            }
-        });
+                    if (itemId == R.id.map) {
+                        // Navigate to MapActivity when the home item is selected
+                        intent = new Intent(MainActivity.this, MapActivity.class);
+                    } else if (itemId == R.id.profile) {
+                        // Navigate to HomeActivity when the profile item is selected
+                        intent = new Intent(MainActivity.this, HomeActivity.class);
+                    }
+                    // Add more if-else statements for other menu items if needed
 
+                    if (intent != null) {
+                        startActivity(intent);
+                    }
+                }
+            });
+        } else {
+            Log.e("MainActivity", "ChipNavigationBar not found. Check your layout file.");
+        }
     }
 
-    public boolean isServicesOK(){
-        Log.d(TAG, "isServiceOK: Checking google services version");
 
-        int available = GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(MainActivity.this);
-
-        if(available == ConnectionResult.SUCCESS){
-            //map request can be made
-            Log.d(TAG, "isServicesOK: Google Play Services is working");
-            return true;
-        }
-        else if(GoogleApiAvailability.getInstance().isUserResolvableError(available)){
-            //error can be solved
-            Log.d(TAG, "isServiceOK: an error occurred but we can fix it");
-            Dialog dialog = GoogleApiAvailability.getInstance().getErrorDialog(MainActivity.this,available, ERROR_DIALOG_REQUEST);
-            dialog.show();
-        }
-        else{
-            Toast.makeText(this,"You can't map requests", Toast.LENGTH_SHORT).show();
-        }
-        return false;
-    }
 
 }
+
+
+
+
+
+
+
+
+// private void init() {
+//   Button btnMap = findViewById(R.id.navBottomBar); // Make sure the id matches the one in your XML layout
+//   btnMap.setOnClickListener(new View.OnClickListener() {
+//     @Override
+//      public void onClick(View v) {
+
+//    Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+//   startActivity(intent);
+//   }
+// });
+//  }
+
+
+
